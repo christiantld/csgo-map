@@ -2,7 +2,7 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://roadtomajor.chrxtn.com.br/',
+    url: 'https://csgo-map.vercel.app/',
     site_name: 'Road to CS:GO Major'
   },
   twitter: {

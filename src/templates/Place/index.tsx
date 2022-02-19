@@ -34,9 +34,9 @@ export default function PlaceTemplate({ place }: PlaceTemplateProps) {
       <NextSeo
         title={`${place.name} - Road to CS:GO Major`}
         description={place.description?.text}
-        canonical="https://roadtomajor.chrxtn.com.br/"
+        canonical="https://csgo-map.vercel.app/"
         openGraph={{
-          url: 'https://roadtomajor.chrxtn.com.br/',
+          url: 'https://csgo-map.vercel.app/',
           title: `${place.name} - Road to CS:GO Major`,
           description: place.description?.text,
           images: [

@@ -9,12 +9,10 @@ export const Wrapper = styled.div`
   cursor: pointer;
 
   svg {
-    transition: color 0.2s ease-in-out;
-  }
-
-  &:hover {
-    svg: {
+    transition: all 0.2s ease-in-out;
+    &:hover {
       color: var(--highlight-color);
+      filter: drop-shadow(0 1px 5px #040404);
     }
   }
 `

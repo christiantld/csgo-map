@@ -13,21 +13,21 @@ export default function HomeTemplate({ places }: MapProps) {
       <NextSeo
         title="Road to CS:GO Major"
         description="A simple map showing the major CS:GO maps and their locations."
-        canonical="https://roadtomajor.chrxtn.com.br/"
+        canonical="https://csgo-map.vercel.app/"
         openGraph={{
-          url: 'https://roadtomajor.chrxtn.com.br/',
+          url: 'https://csgo-map.vercel.app/',
           title: 'Road to CS:GO Major',
           description:
             'A simple map showing the major CS:GO maps and their locations.',
           images: [
             {
-              url: 'https://roadtomajor.chrxtn.com.br/img/cover.png',
+              url: 'https://csgo-map.vercel.app/img/cover.png',
               width: 1280,
               height: 720,
-              alt: 'My Trips'
+              alt: 'Road to CS:GO Major'
             }
           ],
-          site_name: 'My Trips'
+          site_name: 'Road to CS:GO Major'
         }}
       />
       <LinkWrapper href="/about">

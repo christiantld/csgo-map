@@ -14,7 +14,7 @@ export const Content = styled.div`
 export const Heading = styled.h1`
   font-size: var(--large);
   margin-bottom: var(--medium);
-  color: var(--accent-color);
+  color: var(--highlight-color);
 `
 
 export const Description = styled.div`

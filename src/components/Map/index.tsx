@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router'
-import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, MapConsumer } from 'react-leaflet'
+import L from 'leaflet'
+import * as S from './styles'
 
 type Place = {
   id: number
@@ -33,32 +35,60 @@ const CustomTileLayer = () => {
   )
 }
 
+const markerIcon = new L.Icon({
+  iconUrl: 'img/icon.png',
+  iconSize: [40, 40],
+  iconAnchor: [25, 10]
+})
+
 const Map = ({ places }: MapProps) => {
   const router = useRouter()
   return (
-    <MapContainer
-      center={[0, 0]}
-      zoom={3}
-      style={{ height: '100%', width: '100%' }}
-    >
-      <CustomTileLayer />
-      {places?.map(({ id, name, slug, location }) => {
-        const { latitude, longitude } = location
+    <S.MapWrapper>
+      <MapContainer
+        center={[0, 0]}
+        zoom={2.4}
+        minZoom={2.4}
+        maxBounds={[
+          [180, -180],
+          [-180, 180]
+        ]}
+        style={{ height: '100%', width: '100%' }}
+      >
+        <MapConsumer>
+          {(map) => {
+            const width =
+              window.innerWidth ||
+              document.documentElement.clientWidth ||
+              document.body.clientWidth
 
-        return (
-          <Marker
-            key={`place-${id}`}
-            position={[latitude, longitude]}
-            title={name}
-            eventHandlers={{
-              click: () => {
-                router.push(`/place/${slug}`)
-              }
-            }}
-          />
-        )
-      })}
-    </MapContainer>
+            if (width < 768) {
+              map.setMinZoom(1.6)
+            }
+
+            return null
+          }}
+        </MapConsumer>
+        <CustomTileLayer />
+        {places?.map(({ id, name, slug, location }) => {
+          const { latitude, longitude } = location
+
+          return (
+            <Marker
+              key={`place-${id}`}
+              position={[latitude, longitude]}
+              title={name}
+              icon={markerIcon}
+              eventHandlers={{
+                click: () => {
+                  router.push(`/place/${slug}`)
+                }
+              }}
+            />
+          )
+        })}
+      </MapContainer>
+    </S.MapWrapper>
   )
 }
 export default Map
